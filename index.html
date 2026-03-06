@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,247 +15,353 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
+font-family:Segoe UI;
+scroll-behavior:smooth;
 }
 
 body{
-height:100vh;
-background:linear-gradient(270deg,#0f0f0f,#111,#1a1a1a,#000);
-background-size:800% 800%;
-animation:bgMove 20s infinite;
+background:#000;
 color:white;
 overflow-x:hidden;
 }
 
-@keyframes bgMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+/* LOADING SCREEN */
+
+#loader{
+
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+font-size:30px;
+letter-spacing:3px;
+animation:fadeOut 2s forwards;
+animation-delay:2s;
+
 }
 
-header{
+@keyframes fadeOut{
+to{
+opacity:0;
+visibility:hidden;
+}
+}
+
+/* GALAXY BACKGROUND */
+
+body::before{
+
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564") center/cover;
+z-index:-2;
+transform:scale(1.2);
+
+}
+
+/* HERO */
+
+.hero{
+
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
-padding:60px 20px;
+
 }
 
 .logo{
-width:120px;
+
+width:150px;
 border-radius:50%;
-animation:logoFloat 4s infinite ease-in-out;
-box-shadow:0 0 30px #00f0ff;
+box-shadow:0 0 40px cyan;
+animation:float 4s infinite ease-in-out;
+
 }
 
-@keyframes logoFloat{
-0%{transform:translateY(0px);}
-50%{transform:translateY(-15px);}
-100%{transform:translateY(0px);}
+@keyframes float{
+
+0%{transform:translateY(0)}
+50%{transform:translateY(-20px)}
+100%{transform:translateY(0)}
+
 }
 
 h1{
-font-size:50px;
-letter-spacing:3px;
-margin-top:20px;
-background:linear-gradient(90deg,#00f0ff,#00ff88);
+
+font-size:60px;
+background:linear-gradient(90deg,#00ffe7,#00ff88);
 -webkit-background-clip:text;
 color:transparent;
-animation:textGlow 3s infinite alternate;
+margin-top:20px;
+
 }
 
-@keyframes textGlow{
-from{filter:drop-shadow(0 0 5px #00f0ff);}
-to{filter:drop-shadow(0 0 20px #00ff88);}
-}
+.typing{
 
-.tagline{
 margin-top:10px;
-font-size:18px;
-opacity:.8;
+font-size:20px;
+
 }
 
-.links{
-margin-top:30px;
-}
+/* BUTTONS */
 
-.links a{
+.buttons a{
+
 text-decoration:none;
 color:white;
-background:#111;
-padding:12px 25px;
-margin:8px;
+background:rgba(255,255,255,0.1);
+padding:12px 30px;
+margin:10px;
 display:inline-block;
 border-radius:30px;
 transition:.4s;
-box-shadow:0 0 10px #000;
+
 }
 
-.links a:hover{
-transform:scale(1.1);
-background:#00f0ff;
+.buttons a:hover{
+
+background:cyan;
 color:black;
-box-shadow:0 0 20px #00f0ff;
+transform:scale(1.1);
+
 }
 
-.section{
-padding:60px 20px;
+/* PARALLAX SECTION */
+
+.parallax{
+
+height:400px;
+background:url("https://images.unsplash.com/photo-1446776653964-20c1d3a81b06") center/cover fixed;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:40px;
+
+}
+
+/* ABOUT */
+
+section{
+
+padding:100px 20px;
 text-align:center;
-}
 
-.section h2{
-font-size:35px;
-margin-bottom:30px;
 }
 
 .about{
+
 max-width:700px;
 margin:auto;
-font-size:18px;
-line-height:1.6;
-opacity:.9;
+line-height:1.8;
+
 }
 
+/* FRIENDS */
+
 .friends{
+
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:20px;
 max-width:900px;
 margin:auto;
+
 }
 
 .card{
-background:#111;
+
+background:rgba(255,255,255,0.08);
 padding:20px;
 border-radius:15px;
-transition:.4s;
-box-shadow:0 0 15px #000;
+transition:.5s;
+
 }
 
 .card:hover{
+
 transform:translateY(-10px);
-box-shadow:0 0 25px #00f0ff;
+box-shadow:0 0 30px cyan;
+
 }
 
-.card h3{
-margin-bottom:10px;
+/* MINECRAFT BLOCK */
+
+.block{
+
+width:80px;
+height:80px;
+background:url("https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/20/Grass_Block_JE7_BE6.png") center/cover;
+position:fixed;
+bottom:20px;
+right:20px;
+animation:spin 8s linear infinite;
+
+}
+
+@keyframes spin{
+
+from{transform:rotateY(0)}
+to{transform:rotateY(360deg)}
+
+}
+
+/* CURSOR PARTICLES */
+
+.trail{
+
+position:fixed;
+width:6px;
+height:6px;
+background:cyan;
+border-radius:50%;
+pointer-events:none;
+animation:fade 1s linear forwards;
+
+}
+
+@keyframes fade{
+
+to{
+opacity:0;
+transform:scale(3);
+}
+
 }
 
 footer{
-text-align:center;
+
 padding:40px;
+text-align:center;
 opacity:.6;
+
 }
 
 </style>
+
 </head>
 
 <body>
 
-<header>
+<div id="loader">NX Spider Loading...</div>
+
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mpeg">
+</audio>
+
+<div class="hero">
 
 <img src="nxlogo.jpg" class="logo">
 
 <h1>NX Spider</h1>
 
-<p class="tagline">
-Minecraft Content Creator • Gamer • Community Builder
-</p>
+<div class="typing" id="typing"></div>
 
-<div class="links">
+<div class="buttons">
 
-<a href="https://youtube.com/@nxspiderr?si=VO2Cd60GE6gAJB1P" target="_blank">
-YouTube
-</a>
-
-<a href="https://www.instagram.com/_nxspider?igsh=MTY0aGxtOTFpZmc2aQ==" target="_blank">
-Instagram
-</a>
-
-<a href="https://discord.gg/e4GaZKFdMa" target="_blank">
-Discord
-</a>
+<a href="https://youtube.com/@nxspiderr?si=VO2Cd60GE6gAJB1P">YouTube</a>
+<a href="https://www.instagram.com/_nxspider?igsh=MTY0aGxtOTFpZmc2aQ==">Instagram</a>
+<a href="https://discord.gg/e4GaZKFdMa">Discord</a>
 
 </div>
 
-</header>
+</div>
 
-<section class="section">
+<div class="parallax">
+Welcome to NX Spider
+</div>
+
+<section>
 
 <h2>About NX Spider</h2>
 
 <p class="about">
-NX Spider is a passionate Minecraft content creator who loves creating fun gameplay, 
-community events and awesome gaming moments. The goal of NX Spider is to build a strong 
-gaming community where players can chill, play and enjoy together. From Minecraft PvP 
-to server events and creative builds, NX Spider brings entertainment and creativity 
-to the Minecraft world.
+
+NX Spider is a Minecraft content creator who creates entertaining
+gameplay videos, PvP battles and community events. The goal is to
+build a strong gaming community where players can chill and enjoy
+Minecraft together.
+
 </p>
 
 </section>
 
-<section class="section">
+<section>
 
 <h2>Friends</h2>
 
 <div class="friends">
 
-<div class="card">
-<h3>ChoraOfficial</h3>
-<p>Discord: choraofficial</p>
-</div>
-
-<div class="card">
-<h3>Ender Senpai</h3>
-<p>Discord: endersenpai4u</p>
-</div>
-
-<div class="card">
-<h3>Leonora Gaming</h3>
-<p>Discord: leonora.gaming</p>
-</div>
-
-<div class="card">
-<h3>M4XXX MVP</h3>
-<p>Discord: m4xxxmvp</p>
-</div>
-
-<div class="card">
-<h3>DarkRuby</h3>
-<p>Discord: darkrubyx</p>
-</div>
-
-<div class="card">
-<h3>LavingGo</h3>
-<p>Discord: lavinggo</p>
-</div>
-
-<div class="card">
-<h3>RK Boys Playz</h3>
-<p>Discord: rkboysplayz</p>
-</div>
-
-<div class="card">
-<h3>AccountBan</h3>
-<p>Discord: accountban007</p>
-</div>
-
-<div class="card">
-<h3>Mr Strange</h3>
-<p>Discord: mr_strange011</p>
-</div>
-
-<div class="card">
-<h3>Netherrack</h3>
-<p>Discord: netherrack.dev</p>
-</div>
+<div class="card">choraofficial</div>
+<div class="card">endersenpai4u</div>
+<div class="card">leonora.gaming</div>
+<div class="card">m4xxxmvp</div>
+<div class="card">darkrubyx</div>
+<div class="card">lavinggo</div>
+<div class="card">rkboysplayz</div>
+<div class="card">accountban007</div>
+<div class="card">mr_strange011</div>
 
 </div>
 
 </section>
 
+<div class="block"></div>
+
 <footer>
-
-Made with ❤️ by NX Spider Community
-
+Made with ❤️ by NX Spider
 </footer>
+
+<script>
+
+/* TYPING */
+
+const text="Minecraft Content Creator • Gamer • Community Builder";
+let i=0;
+
+function type(){
+
+if(i<text.length){
+
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,50);
+
+}
+
+}
+
+type();
+
+/* CURSOR TRAIL */
+
+document.addEventListener("mousemove",function(e){
+
+let trail=document.createElement("div");
+
+trail.className="trail";
+trail.style.left=e.pageX+"px";
+trail.style.top=e.pageY+"px";
+
+document.body.appendChild(trail);
+
+setTimeout(()=>{
+
+trail.remove()
+
+},1000)
+
+})
+
+</script>
 
 </body>
 </html>
