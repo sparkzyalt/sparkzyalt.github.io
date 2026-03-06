@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NX Spider</title>
+
+<link rel="icon" href="nxlogo.jpg">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+height:100vh;
+background:linear-gradient(270deg,#0f0f0f,#111,#1a1a1a,#000);
+background-size:800% 800%;
+animation:bgMove 20s infinite;
+color:white;
+overflow-x:hidden;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+header{
+text-align:center;
+padding:60px 20px;
+}
+
+.logo{
+width:120px;
+border-radius:50%;
+animation:logoFloat 4s infinite ease-in-out;
+box-shadow:0 0 30px #00f0ff;
+}
+
+@keyframes logoFloat{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-15px);}
+100%{transform:translateY(0px);}
+}
+
+h1{
+font-size:50px;
+letter-spacing:3px;
+margin-top:20px;
+background:linear-gradient(90deg,#00f0ff,#00ff88);
+-webkit-background-clip:text;
+color:transparent;
+animation:textGlow 3s infinite alternate;
+}
+
+@keyframes textGlow{
+from{filter:drop-shadow(0 0 5px #00f0ff);}
+to{filter:drop-shadow(0 0 20px #00ff88);}
+}
+
+.tagline{
+margin-top:10px;
+font-size:18px;
+opacity:.8;
+}
+
+.links{
+margin-top:30px;
+}
+
+.links a{
+text-decoration:none;
+color:white;
+background:#111;
+padding:12px 25px;
+margin:8px;
+display:inline-block;
+border-radius:30px;
+transition:.4s;
+box-shadow:0 0 10px #000;
+}
+
+.links a:hover{
+transform:scale(1.1);
+background:#00f0ff;
+color:black;
+box-shadow:0 0 20px #00f0ff;
+}
+
+.section{
+padding:60px 20px;
+text-align:center;
+}
+
+.section h2{
+font-size:35px;
+margin-bottom:30px;
+}
+
+.about{
+max-width:700px;
+margin:auto;
+font-size:18px;
+line-height:1.6;
+opacity:.9;
+}
+
+.friends{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+max-width:900px;
+margin:auto;
+}
+
+.card{
+background:#111;
+padding:20px;
+border-radius:15px;
+transition:.4s;
+box-shadow:0 0 15px #000;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 25px #00f0ff;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+footer{
+text-align:center;
+padding:40px;
+opacity:.6;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<img src="nxlogo.jpg" class="logo">
+
+<h1>NX Spider</h1>
+
+<p class="tagline">
+Minecraft Content Creator • Gamer • Community Builder
+</p>
+
+<div class="links">
+
+<a href="https://youtube.com/@nxspiderr?si=VO2Cd60GE6gAJB1P" target="_blank">
+YouTube
+</a>
+
+<a href="https://www.instagram.com/_nxspider?igsh=MTY0aGxtOTFpZmc2aQ==" target="_blank">
+Instagram
+</a>
+
+<a href="https://discord.gg/e4GaZKFdMa" target="_blank">
+Discord
+</a>
+
+</div>
+
+</header>
+
+<section class="section">
+
+<h2>About NX Spider</h2>
+
+<p class="about">
+NX Spider is a passionate Minecraft content creator who loves creating fun gameplay, 
+community events and awesome gaming moments. The goal of NX Spider is to build a strong 
+gaming community where players can chill, play and enjoy together. From Minecraft PvP 
+to server events and creative builds, NX Spider brings entertainment and creativity 
+to the Minecraft world.
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Friends</h2>
+
+<div class="friends">
+
+<div class="card">
+<h3>ChoraOfficial</h3>
+<p>Discord: choraofficial</p>
+</div>
+
+<div class="card">
+<h3>Ender Senpai</h3>
+<p>Discord: endersenpai4u</p>
+</div>
+
+<div class="card">
+<h3>Leonora Gaming</h3>
+<p>Discord: leonora.gaming</p>
+</div>
+
+<div class="card">
+<h3>M4XXX MVP</h3>
+<p>Discord: m4xxxmvp</p>
+</div>
+
+<div class="card">
+<h3>DarkRuby</h3>
+<p>Discord: darkrubyx</p>
+</div>
+
+<div class="card">
+<h3>LavingGo</h3>
+<p>Discord: lavinggo</p>
+</div>
+
+<div class="card">
+<h3>RK Boys Playz</h3>
+<p>Discord: rkboysplayz</p>
+</div>
+
+<div class="card">
+<h3>AccountBan</h3>
+<p>Discord: accountban007</p>
+</div>
+
+<div class="card">
+<h3>Mr Strange</h3>
+<p>Discord: mr_strange011</p>
+</div>
+
+<div class="card">
+<h3>Netherrack</h3>
+<p>Discord: netherrack.dev</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+Made with ❤️ by NX Spider Community
+
+</footer>
+
+</body>
+</html>
