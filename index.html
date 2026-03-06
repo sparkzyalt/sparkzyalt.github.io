@@ -18,16 +18,33 @@ padding:0;
 box-sizing:border-box;
 font-family:Poppins;
 scroll-behavior:smooth;
-cursor:url('https://cur.cursors-4u.net/games/gam-15/gam1422.cur'),auto;
 }
 
 body{
-background:#0b0b0f;
+background:black;
 color:white;
 overflow-x:hidden;
 }
 
-/* loading screen */
+/* neon red animated background */
+
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background:radial-gradient(circle,#ff000020,#000000);
+animation:bgmove 12s linear infinite;
+z-index:-3;
+}
+
+@keyframes bgmove{
+0%{transform:translate(0,0)}
+50%{transform:translate(-15%,-15%)}
+100%{transform:translate(0,0)}
+}
+
+/* loader */
 
 #loader{
 position:fixed;
@@ -40,11 +57,11 @@ justify-content:center;
 z-index:9999;
 }
 
-.loader-circle{
-width:60px;
-height:60px;
-border:5px solid #111;
-border-top:5px solid #00ffe5;
+.loader{
+width:50px;
+height:50px;
+border:4px solid #111;
+border-top:4px solid red;
 border-radius:50%;
 animation:spin 1s linear infinite;
 }
@@ -53,31 +70,13 @@ animation:spin 1s linear infinite;
 100%{transform:rotate(360deg)}
 }
 
-/* spider web background */
-
-.web{
-position:fixed;
-width:100%;
-height:100%;
-background-image:
-radial-gradient(circle at center,#ffffff11 1px,transparent 1px);
-background-size:40px 40px;
-animation:webmove 20s linear infinite;
-z-index:-1;
-}
-
-@keyframes webmove{
-0%{background-position:0 0}
-100%{background-position:200px 200px}
-}
-
 /* navbar */
 
 nav{
 position:fixed;
 top:0;
 width:100%;
-background:rgba(0,0,0,0.5);
+background:rgba(0,0,0,0.6);
 backdrop-filter:blur(10px);
 padding:15px;
 text-align:center;
@@ -89,11 +88,10 @@ color:white;
 margin:15px;
 text-decoration:none;
 font-weight:500;
-transition:0.3s;
 }
 
 nav a:hover{
-color:#00ffe5;
+color:red;
 }
 
 /* hero */
@@ -110,7 +108,7 @@ text-align:center;
 .logo{
 width:150px;
 border-radius:50%;
-box-shadow:0 0 25px #00ffe5;
+box-shadow:0 0 25px red;
 animation:float 4s ease-in-out infinite;
 }
 
@@ -125,44 +123,14 @@ margin-top:20px;
 }
 
 .hero span{
-color:#00ffe5;
+color:red;
 }
 
-.hero p{
-opacity:0.8;
-margin-top:10px;
-}
-
-/* button */
-
-.btn{
-margin-top:25px;
-padding:12px 28px;
-border:none;
-border-radius:30px;
-background:#00ffe5;
-color:black;
-font-weight:bold;
-transition:0.3s;
-}
-
-.btn:hover{
-transform:scale(1.1);
-}
-
-/* sections */
+/* glass cards */
 
 section{
 padding:100px 10%;
 }
-
-h2{
-text-align:center;
-margin-bottom:40px;
-font-size:40px;
-}
-
-/* glass cards */
 
 .cards{
 display:grid;
@@ -171,8 +139,8 @@ gap:25px;
 }
 
 .card{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
+background:rgba(255,0,0,0.05);
+border:1px solid rgba(255,0,0,0.3);
 padding:25px;
 border-radius:20px;
 backdrop-filter:blur(10px);
@@ -181,20 +149,66 @@ transition:0.3s;
 
 .card:hover{
 transform:translateY(-10px);
-box-shadow:0 0 20px #00ffe5;
+box-shadow:0 0 20px red;
 }
 
-.friend{
-color:#00ffe5;
-font-weight:bold;
+/* spider animation */
+
+.spider{
+position:fixed;
+top:-100px;
+left:50%;
+width:40px;
+animation:crawl 10s linear infinite;
+z-index:10;
 }
 
-/* footer */
+@keyframes crawl{
+
+0%{
+top:-100px;
+left:10%;
+}
+
+50%{
+top:40%;
+left:70%;
+}
+
+100%{
+top:110%;
+left:30%;
+}
+
+}
+
+/* minecraft particles */
+
+.particle{
+position:fixed;
+width:10px;
+height:10px;
+background:red;
+opacity:0.7;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+
+0%{
+transform:translateY(-100px) rotate(0deg);
+}
+
+100%{
+transform:translateY(110vh) rotate(360deg);
+}
+
+}
 
 footer{
 text-align:center;
 padding:40px;
-background:#000;
+background:black;
 }
 
 </style>
@@ -203,16 +217,20 @@ background:#000;
 <body>
 
 <div id="loader">
-<div class="loader-circle"></div>
+<div class="loader"></div>
 </div>
 
-<div class="web"></div>
+<!-- spider -->
+
+<img class="spider" src="https://i.imgur.com/8QfQZQK.png">
 
 <nav>
+
 <a href="#home">Home</a>
 <a href="#about">About</a>
 <a href="#friends">Friends</a>
 <a href="#social">Social</a>
+
 </nav>
 
 <section class="hero" id="home">
@@ -223,10 +241,6 @@ background:#000;
 
 <p>Minecraft Content Creator</p>
 
-<a href="https://discord.gg/e4GaZKFdMa">
-<button class="btn">Join Discord</button>
-</a>
-
 </section>
 
 <section id="about">
@@ -236,21 +250,15 @@ background:#000;
 <div class="cards">
 
 <div class="card">
-<p>
-NXSpider is a Minecraft content creator focused on gaming, entertainment and community building.
-</p>
+NXSpider is a Minecraft content creator who builds gaming content and community.
 </div>
 
 <div class="card">
-<p>
-Website developed with help of developer <b>Netherrack.dev</b>.
-</p>
+Website created with help of developer <b>Netherrack.dev</b>.
 </div>
 
 <div class="card">
-<p>
-We collaborate with friends and creators to build an amazing Minecraft community.
-</p>
+Focused on gaming, collaboration and fun community.
 </div>
 
 </div>
@@ -263,15 +271,18 @@ We collaborate with friends and creators to build an amazing Minecraft community
 
 <div class="cards">
 
-<div class="card"><p class="friend">Ender</p>endersenpai4u</div>
-<div class="card"><p class="friend">ChoraOfficial</p>choraofficial</div>
-<div class="card"><p class="friend">DarkRuby</p>darkrubyx</div>
-<div class="card"><p class="friend">Leonora</p>leonora.gaming</div>
-<div class="card"><p class="friend">Shivam</p>m4xxxmvp</div>
-<div class="card"><p class="friend">Lavinggo</p>lavinggo</div>
-<div class="card"><p class="friend">RKboysplayz</p>rkboysplayz</div>
-<div class="card"><p class="friend">AccountBan</p>accountban007</div>
-<div class="card"><p class="friend">Mr Strange</p>mr_strange011</div>
+<div class="card">Ender — endersenpai4u</div>
+<div class="card">ChoraOfficial — choraofficial</div>
+<div class="card">DarkRuby — darkrubyx</div>
+<div class="card">Leonora — leonora.gaming</div>
+<div class="card">Shivam — m4xxxmvp</div>
+<div class="card">Lavinggo — lavinggo</div>
+<div class="card">RKboysplayz — rkboysplayz</div>
+<div class="card">AccountBan — accountban007</div>
+<div class="card">Mr Strange — mr_strange011</div>
+<div class="card">Void — void_1252</div>
+<div class="card">KitSune — kitsune_xp0</div>
+<div class="card">Jayash Gamer — jayashgamer</div>
 
 </div>
 
@@ -279,25 +290,22 @@ We collaborate with friends and creators to build an amazing Minecraft community
 
 <section id="social">
 
-<h2>Social</h2>
+<h2>Social Links</h2>
 
 <div class="cards">
 
 <div class="card">
-YouTube  
-<br><br>
+YouTube<br><br>
 <a href="https://youtube.com/@nxspiderr?si=VO2Cd60GE6gAJB1P">Visit</a>
 </div>
 
 <div class="card">
-Instagram  
-<br><br>
-<a href="https://www.instagram.com/_nxspider?igsh=MTY0aGxtOTFpZmc2aQ==">Visit</a>
+Instagram<br><br>
+<a href="https://www.instagram.com/nxspider._/">Visit</a>
 </div>
 
 <div class="card">
-Discord  
-<br><br>
+Discord<br><br>
 <a href="https://discord.gg/e4GaZKFdMa">Join</a>
 </div>
 
@@ -314,9 +322,29 @@ Discord
 
 <script>
 
-window.addEventListener("load",()=>{
+/* loader */
+
+window.onload=()=>{
 document.getElementById("loader").style.display="none"
-})
+}
+
+/* minecraft particles */
+
+function createParticle(){
+
+let p=document.createElement("div")
+p.className="particle"
+
+p.style.left=Math.random()*100+"vw"
+p.style.animationDuration=(Math.random()*3+3)+"s"
+
+document.body.appendChild(p)
+
+setTimeout(()=>{p.remove()},6000)
+
+}
+
+setInterval(createParticle,300)
 
 </script>
 
