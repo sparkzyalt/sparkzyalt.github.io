@@ -18,30 +18,57 @@ padding:0;
 box-sizing:border-box;
 font-family:Poppins;
 scroll-behavior:smooth;
+cursor:url('https://cur.cursors-4u.net/games/gam-15/gam1422.cur'),auto;
 }
 
 body{
-background:black;
+background:#0b0b0f;
 color:white;
 overflow-x:hidden;
 }
 
-/* animated gradient bg */
+/* loading screen */
 
-body::before{
-content:"";
+#loader{
 position:fixed;
-width:200%;
-height:200%;
-background:linear-gradient(45deg,#0f2027,#203a43,#2c5364);
-animation:bgmove 20s linear infinite;
+width:100%;
+height:100%;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+}
+
+.loader-circle{
+width:60px;
+height:60px;
+border:5px solid #111;
+border-top:5px solid #00ffe5;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{transform:rotate(360deg)}
+}
+
+/* spider web background */
+
+.web{
+position:fixed;
+width:100%;
+height:100%;
+background-image:
+radial-gradient(circle at center,#ffffff11 1px,transparent 1px);
+background-size:40px 40px;
+animation:webmove 20s linear infinite;
 z-index:-1;
 }
 
-@keyframes bgmove{
-0%{transform:translate(0,0)}
-50%{transform:translate(-25%,-25%)}
-100%{transform:translate(0,0)}
+@keyframes webmove{
+0%{background-position:0 0}
+100%{background-position:200px 200px}
 }
 
 /* navbar */
@@ -83,6 +110,7 @@ text-align:center;
 .logo{
 width:150px;
 border-radius:50%;
+box-shadow:0 0 25px #00ffe5;
 animation:float 4s ease-in-out infinite;
 }
 
@@ -92,7 +120,7 @@ animation:float 4s ease-in-out infinite;
 }
 
 .hero h1{
-font-size:50px;
+font-size:55px;
 margin-top:20px;
 }
 
@@ -100,15 +128,21 @@ margin-top:20px;
 color:#00ffe5;
 }
 
+.hero p{
+opacity:0.8;
+margin-top:10px;
+}
+
+/* button */
+
 .btn{
 margin-top:25px;
-padding:12px 25px;
-background:#00ffe5;
+padding:12px 28px;
 border:none;
 border-radius:30px;
+background:#00ffe5;
 color:black;
 font-weight:bold;
-cursor:pointer;
 transition:0.3s;
 }
 
@@ -128,7 +162,7 @@ margin-bottom:40px;
 font-size:40px;
 }
 
-/* cards */
+/* glass cards */
 
 .cards{
 display:grid;
@@ -138,22 +172,21 @@ gap:25px;
 
 .card{
 background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
 padding:25px;
 border-radius:20px;
-backdrop-filter:blur(8px);
+backdrop-filter:blur(10px);
 transition:0.3s;
 }
 
 .card:hover{
 transform:translateY(-10px);
-background:rgba(255,255,255,0.1);
+box-shadow:0 0 20px #00ffe5;
 }
 
-/* friends */
-
 .friend{
-font-weight:bold;
 color:#00ffe5;
+font-weight:bold;
 }
 
 /* footer */
@@ -161,14 +194,19 @@ color:#00ffe5;
 footer{
 text-align:center;
 padding:40px;
-background:black;
-margin-top:40px;
+background:#000;
 }
 
 </style>
 </head>
 
 <body>
+
+<div id="loader">
+<div class="loader-circle"></div>
+</div>
+
+<div class="web"></div>
 
 <nav>
 <a href="#home">Home</a>
@@ -177,15 +215,13 @@ margin-top:40px;
 <a href="#social">Social</a>
 </nav>
 
-<!-- HERO -->
-
 <section class="hero" id="home">
 
 <img src="nxlogo.jpg" class="logo">
 
 <h1>NX<span>Spider</span></h1>
 
-<p>Minecraft Content Creator • Community Builder • Gamer</p>
+<p>Minecraft Content Creator</p>
 
 <a href="https://discord.gg/e4GaZKFdMa">
 <button class="btn">Join Discord</button>
@@ -193,117 +229,76 @@ margin-top:40px;
 
 </section>
 
-<!-- ABOUT -->
-
 <section id="about">
 
-<h2>About NXSpider</h2>
+<h2>About</h2>
 
 <div class="cards">
 
 <div class="card">
-<h3>Creator</h3>
 <p>
-NXSpider is a Minecraft content creator who creates entertaining gaming content, builds communities and collaborates with friends.
+NXSpider is a Minecraft content creator focused on gaming, entertainment and community building.
 </p>
 </div>
 
 <div class="card">
-<h3>Developer Friend</h3>
 <p>
-Website developed with help of <b>Netherrack.dev</b> – passionate Minecraft developer and community builder.
+Website developed with help of developer <b>Netherrack.dev</b>.
 </p>
 </div>
 
 <div class="card">
-<h3>Community</h3>
 <p>
-NXSpider focuses on fun gaming, collaborations and building an awesome gaming community with friends.
+We collaborate with friends and creators to build an amazing Minecraft community.
 </p>
 </div>
 
 </div>
 
 </section>
-
-<!-- FRIENDS -->
 
 <section id="friends">
 
-<h2>Friends & Team</h2>
+<h2>Friends</h2>
 
 <div class="cards">
 
-<div class="card">
-<p class="friend">Ender</p>
-<p>Discord: endersenpai4u</p>
-</div>
-
-<div class="card">
-<p class="friend">Shivam</p>
-<p>Discord: m4xxxmvp</p>
-</div>
-
-<div class="card">
-<p class="friend">ChoraOfficial</p>
-<p>Discord: choraofficial</p>
-</div>
-
-<div class="card">
-<p class="friend">DarkRuby</p>
-<p>Discord: darkrubyx</p>
-</div>
-
-<div class="card">
-<p class="friend">Leonora</p>
-<p>Discord: leonora.gaming</p>
-</div>
-
-<div class="card">
-<p class="friend">Lavinggo</p>
-<p>Discord: lavinggo</p>
-</div>
-
-<div class="card">
-<p class="friend">RKboysplayz</p>
-<p>Discord: rkboysplayz</p>
-</div>
-
-<div class="card">
-<p class="friend">AccountBan</p>
-<p>Discord: accountban007</p>
-</div>
-
-<div class="card">
-<p class="friend">Mr Strange</p>
-<p>Discord: mr_strange011</p>
-</div>
+<div class="card"><p class="friend">Ender</p>endersenpai4u</div>
+<div class="card"><p class="friend">ChoraOfficial</p>choraofficial</div>
+<div class="card"><p class="friend">DarkRuby</p>darkrubyx</div>
+<div class="card"><p class="friend">Leonora</p>leonora.gaming</div>
+<div class="card"><p class="friend">Shivam</p>m4xxxmvp</div>
+<div class="card"><p class="friend">Lavinggo</p>lavinggo</div>
+<div class="card"><p class="friend">RKboysplayz</p>rkboysplayz</div>
+<div class="card"><p class="friend">AccountBan</p>accountban007</div>
+<div class="card"><p class="friend">Mr Strange</p>mr_strange011</div>
 
 </div>
 
 </section>
 
-<!-- SOCIAL -->
-
 <section id="social">
 
-<h2>Social Links</h2>
+<h2>Social</h2>
 
 <div class="cards">
 
 <div class="card">
-<h3>YouTube</h3>
-<a href="https://youtube.com/@nxspiderr?si=VO2Cd60GE6gAJB1P">Visit Channel</a>
+YouTube  
+<br><br>
+<a href="https://youtube.com/@nxspiderr?si=VO2Cd60GE6gAJB1P">Visit</a>
 </div>
 
 <div class="card">
-<h3>Instagram</h3>
-<a href="https://www.instagram.com/_nxspider?igsh=MTY0aGxtOTFpZmc2aQ==">Follow Instagram</a>
+Instagram  
+<br><br>
+<a href="https://www.instagram.com/_nxspider?igsh=MTY0aGxtOTFpZmc2aQ==">Visit</a>
 </div>
 
 <div class="card">
-<h3>Discord</h3>
-<a href="https://discord.gg/e4GaZKFdMa">Join Server</a>
+Discord  
+<br><br>
+<a href="https://discord.gg/e4GaZKFdMa">Join</a>
 </div>
 
 </div>
@@ -312,10 +307,18 @@ NXSpider focuses on fun gaming, collaborations and building an awesome gaming co
 
 <footer>
 
-<p>© 2026 NXSpider • Minecraft Creator</p>
+<p>© 2026 NXSpider</p>
 <p>Website crafted by Netherrack.dev</p>
 
 </footer>
+
+<script>
+
+window.addEventListener("load",()=>{
+document.getElementById("loader").style.display="none"
+})
+
+</script>
 
 </body>
 </html>
