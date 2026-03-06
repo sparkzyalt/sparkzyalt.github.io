@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NX Spider</title>
+<title>NXSpider | Minecraft Creator</title>
 
 <link rel="icon" href="nxlogo.jpg">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -16,279 +16,306 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Segoe UI;
+font-family:Poppins;
 scroll-behavior:smooth;
 }
 
 body{
-
-background:#0a0a0a;
+background:black;
 color:white;
 overflow-x:hidden;
-
 }
 
-/* SPIDER WEB BACKGROUND */
+/* animated gradient bg */
 
 body::before{
-
 content:"";
 position:fixed;
-width:100%;
-height:100%;
-background:
-linear-gradient(45deg,rgba(255,255,255,0.03) 1px,transparent 1px),
-linear-gradient(-45deg,rgba(255,255,255,0.03) 1px,transparent 1px);
-
-background-size:40px 40px;
+width:200%;
+height:200%;
+background:linear-gradient(45deg,#0f2027,#203a43,#2c5364);
+animation:bgmove 20s linear infinite;
 z-index:-1;
-animation:webMove 10s linear infinite;
-
 }
 
-@keyframes webMove{
-
-from{background-position:0 0}
-to{background-position:100px 100px}
-
+@keyframes bgmove{
+0%{transform:translate(0,0)}
+50%{transform:translate(-25%,-25%)}
+100%{transform:translate(0,0)}
 }
 
-/* HERO */
+/* navbar */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(10px);
+padding:15px;
+text-align:center;
+z-index:999;
+}
+
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-weight:500;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#00ffe5;
+}
+
+/* hero */
 
 .hero{
-
 height:100vh;
 display:flex;
 flex-direction:column;
-justify-content:center;
 align-items:center;
+justify-content:center;
 text-align:center;
-
 }
 
 .logo{
-
-width:130px;
+width:150px;
 border-radius:50%;
-box-shadow:0 0 20px cyan;
-transition:0.5s;
-
+animation:float 4s ease-in-out infinite;
 }
 
-.logo:hover{
-
-transform:scale(1.1);
-
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-20px)}
 }
 
-h1{
-
-font-size:55px;
+.hero h1{
+font-size:50px;
 margin-top:20px;
-color:#00ffe7;
-
 }
 
-.typing{
-
-margin-top:10px;
-font-size:18px;
-opacity:.8;
-
+.hero span{
+color:#00ffe5;
 }
 
-/* BUTTONS */
-
-.buttons{
-
-margin-top:30px;
-
-}
-
-.buttons a{
-
-text-decoration:none;
-color:white;
+.btn{
+margin-top:25px;
 padding:12px 25px;
-margin:8px;
-background:#111;
+background:#00ffe5;
+border:none;
 border-radius:30px;
-transition:.3s;
-
-}
-
-.buttons a:hover{
-
-background:#00ffe7;
 color:black;
-transform:translateY(-3px);
-
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
 }
 
-/* SECTIONS */
+.btn:hover{
+transform:scale(1.1);
+}
+
+/* sections */
 
 section{
+padding:100px 10%;
+}
 
-padding:90px 20px;
+h2{
 text-align:center;
-
+margin-bottom:40px;
+font-size:40px;
 }
 
-.about{
+/* cards */
 
-max-width:700px;
-margin:auto;
-line-height:1.7;
-
-}
-
-/* FRIENDS */
-
-.friends{
-
+.cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:20px;
-max-width:900px;
-margin:auto;
-
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
 }
 
 .card{
-
-background:#111;
-padding:20px;
-border-radius:12px;
-transition:.4s;
-
+background:rgba(255,255,255,0.05);
+padding:25px;
+border-radius:20px;
+backdrop-filter:blur(8px);
+transition:0.3s;
 }
 
 .card:hover{
-
-transform:translateY(-8px);
-box-shadow:0 0 20px cyan;
-
+transform:translateY(-10px);
+background:rgba(255,255,255,0.1);
 }
 
-/* DISCORD WIDGET */
+/* friends */
 
-.discord{
-
-margin-top:50px;
-
+.friend{
+font-weight:bold;
+color:#00ffe5;
 }
+
+/* footer */
 
 footer{
-
-padding:40px;
 text-align:center;
-opacity:.6;
-
+padding:40px;
+background:black;
+margin-top:40px;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="hero">
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#friends">Friends</a>
+<a href="#social">Social</a>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
 
 <img src="nxlogo.jpg" class="logo">
 
-<h1>NX Spider</h1>
+<h1>NX<span>Spider</span></h1>
 
-<div class="typing" id="typing"></div>
+<p>Minecraft Content Creator • Community Builder • Gamer</p>
 
-<div class="buttons">
+<a href="https://discord.gg/e4GaZKFdMa">
+<button class="btn">Join Discord</button>
+</a>
 
-<a href="https://youtube.com/@nxspiderr?si=VO2Cd60GE6gAJB1P">YouTube</a>
+</section>
 
-<a href="https://www.instagram.com/_nxspider?igsh=MTY0aGxtOTFpZmc2aQ==">Instagram</a>
+<!-- ABOUT -->
 
-<a href="https://discord.gg/e4GaZKFdMa">Discord</a>
+<section id="about">
 
-</div>
+<h2>About NXSpider</h2>
 
-</div>
+<div class="cards">
 
-<section>
-
-<h2>About NX Spider</h2>
-
-<p class="about">
-
-NX Spider is a Minecraft content creator who builds a gaming community
-through fun gameplay, PvP battles and creative Minecraft content.
-
+<div class="card">
+<h3>Creator</h3>
+<p>
+NXSpider is a Minecraft content creator who creates entertaining gaming content, builds communities and collaborates with friends.
 </p>
+</div>
 
-</section>
+<div class="card">
+<h3>Developer Friend</h3>
+<p>
+Website developed with help of <b>Netherrack.dev</b> – passionate Minecraft developer and community builder.
+</p>
+</div>
 
-<section>
-
-<h2>Friends</h2>
-
-<div class="friends">
-
-<div class="card">choraofficial</div>
-<div class="card">endersenpai4u</div>
-<div class="card">leonora.gaming</div>
-<div class="card">m4xxxmvp</div>
-<div class="card">darkrubyx</div>
-<div class="card">lavinggo</div>
-<div class="card">rkboysplayz</div>
-<div class="card">accountban007</div>
-<div class="card">mr_strange011</div>
+<div class="card">
+<h3>Community</h3>
+<p>
+NXSpider focuses on fun gaming, collaborations and building an awesome gaming community with friends.
+</p>
+</div>
 
 </div>
 
 </section>
 
-<section class="discord">
+<!-- FRIENDS -->
 
-<h2>Join My Discord</h2>
+<section id="friends">
 
-<iframe src="https://discord.com/widget?id=1478314337365004399&theme=dark"
-width="350"
-height="500"
-allowtransparency="true"
-frameborder="0"></iframe>
+<h2>Friends & Team</h2>
+
+<div class="cards">
+
+<div class="card">
+<p class="friend">Ender</p>
+<p>Discord: endersenpai4u</p>
+</div>
+
+<div class="card">
+<p class="friend">Shivam</p>
+<p>Discord: m4xxxmvp</p>
+</div>
+
+<div class="card">
+<p class="friend">ChoraOfficial</p>
+<p>Discord: choraofficial</p>
+</div>
+
+<div class="card">
+<p class="friend">DarkRuby</p>
+<p>Discord: darkrubyx</p>
+</div>
+
+<div class="card">
+<p class="friend">Leonora</p>
+<p>Discord: leonora.gaming</p>
+</div>
+
+<div class="card">
+<p class="friend">Lavinggo</p>
+<p>Discord: lavinggo</p>
+</div>
+
+<div class="card">
+<p class="friend">RKboysplayz</p>
+<p>Discord: rkboysplayz</p>
+</div>
+
+<div class="card">
+<p class="friend">AccountBan</p>
+<p>Discord: accountban007</p>
+</div>
+
+<div class="card">
+<p class="friend">Mr Strange</p>
+<p>Discord: mr_strange011</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- SOCIAL -->
+
+<section id="social">
+
+<h2>Social Links</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>YouTube</h3>
+<a href="https://youtube.com/@nxspiderr?si=VO2Cd60GE6gAJB1P">Visit Channel</a>
+</div>
+
+<div class="card">
+<h3>Instagram</h3>
+<a href="https://www.instagram.com/_nxspider?igsh=MTY0aGxtOTFpZmc2aQ==">Follow Instagram</a>
+</div>
+
+<div class="card">
+<h3>Discord</h3>
+<a href="https://discord.gg/e4GaZKFdMa">Join Server</a>
+</div>
+
+</div>
 
 </section>
 
 <footer>
 
-Made with ❤️ by NX Spider
+<p>© 2026 NXSpider • Minecraft Creator</p>
+<p>Website crafted by Netherrack.dev</p>
 
 </footer>
 
-<script>
-
-/* TYPING */
-
-const text="Minecraft Content Creator • Gamer • Community Builder";
-
-let i=0;
-
-function typing(){
-
-if(i<text.length){
-
-document.getElementById("typing").innerHTML+=text.charAt(i);
-
-i++;
-
-setTimeout(typing,50);
-
-}
-
-}
-
-typing();
-
-</script>
-
 </body>
-
 </html>
