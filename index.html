@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -20,38 +21,14 @@ scroll-behavior:smooth;
 }
 
 body{
-background:#000;
+
+background:#0a0a0a;
 color:white;
 overflow-x:hidden;
-}
-
-/* LOADING SCREEN */
-
-#loader{
-
-position:fixed;
-width:100%;
-height:100%;
-background:black;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:9999;
-font-size:30px;
-letter-spacing:3px;
-animation:fadeOut 2s forwards;
-animation-delay:2s;
 
 }
 
-@keyframes fadeOut{
-to{
-opacity:0;
-visibility:hidden;
-}
-}
-
-/* GALAXY BACKGROUND */
+/* SPIDER WEB BACKGROUND */
 
 body::before{
 
@@ -59,9 +36,20 @@ content:"";
 position:fixed;
 width:100%;
 height:100%;
-background:url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564") center/cover;
-z-index:-2;
-transform:scale(1.2);
+background:
+linear-gradient(45deg,rgba(255,255,255,0.03) 1px,transparent 1px),
+linear-gradient(-45deg,rgba(255,255,255,0.03) 1px,transparent 1px);
+
+background-size:40px 40px;
+z-index:-1;
+animation:webMove 10s linear infinite;
+
+}
+
+@keyframes webMove{
+
+from{background-position:0 0}
+to{background-position:100px 100px}
 
 }
 
@@ -80,79 +68,68 @@ text-align:center;
 
 .logo{
 
-width:150px;
+width:130px;
 border-radius:50%;
-box-shadow:0 0 40px cyan;
-animation:float 4s infinite ease-in-out;
+box-shadow:0 0 20px cyan;
+transition:0.5s;
 
 }
 
-@keyframes float{
+.logo:hover{
 
-0%{transform:translateY(0)}
-50%{transform:translateY(-20px)}
-100%{transform:translateY(0)}
+transform:scale(1.1);
 
 }
 
 h1{
 
-font-size:60px;
-background:linear-gradient(90deg,#00ffe7,#00ff88);
--webkit-background-clip:text;
-color:transparent;
+font-size:55px;
 margin-top:20px;
+color:#00ffe7;
 
 }
 
 .typing{
 
 margin-top:10px;
-font-size:20px;
+font-size:18px;
+opacity:.8;
 
 }
 
 /* BUTTONS */
 
+.buttons{
+
+margin-top:30px;
+
+}
+
 .buttons a{
 
 text-decoration:none;
 color:white;
-background:rgba(255,255,255,0.1);
-padding:12px 30px;
-margin:10px;
-display:inline-block;
+padding:12px 25px;
+margin:8px;
+background:#111;
 border-radius:30px;
-transition:.4s;
+transition:.3s;
 
 }
 
 .buttons a:hover{
 
-background:cyan;
+background:#00ffe7;
 color:black;
-transform:scale(1.1);
+transform:translateY(-3px);
 
 }
 
-/* PARALLAX SECTION */
-
-.parallax{
-
-height:400px;
-background:url("https://images.unsplash.com/photo-1446776653964-20c1d3a81b06") center/cover fixed;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:40px;
-
-}
-
-/* ABOUT */
+/* SECTIONS */
 
 section{
 
-padding:100px 20px;
+padding:90px 20px;
 text-align:center;
 
 }
@@ -161,7 +138,7 @@ text-align:center;
 
 max-width:700px;
 margin:auto;
-line-height:1.8;
+line-height:1.7;
 
 }
 
@@ -170,7 +147,7 @@ line-height:1.8;
 .friends{
 
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:20px;
 max-width:900px;
 margin:auto;
@@ -179,61 +156,25 @@ margin:auto;
 
 .card{
 
-background:rgba(255,255,255,0.08);
+background:#111;
 padding:20px;
-border-radius:15px;
-transition:.5s;
+border-radius:12px;
+transition:.4s;
 
 }
 
 .card:hover{
 
-transform:translateY(-10px);
-box-shadow:0 0 30px cyan;
+transform:translateY(-8px);
+box-shadow:0 0 20px cyan;
 
 }
 
-/* MINECRAFT BLOCK */
+/* DISCORD WIDGET */
 
-.block{
+.discord{
 
-width:80px;
-height:80px;
-background:url("https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/20/Grass_Block_JE7_BE6.png") center/cover;
-position:fixed;
-bottom:20px;
-right:20px;
-animation:spin 8s linear infinite;
-
-}
-
-@keyframes spin{
-
-from{transform:rotateY(0)}
-to{transform:rotateY(360deg)}
-
-}
-
-/* CURSOR PARTICLES */
-
-.trail{
-
-position:fixed;
-width:6px;
-height:6px;
-background:cyan;
-border-radius:50%;
-pointer-events:none;
-animation:fade 1s linear forwards;
-
-}
-
-@keyframes fade{
-
-to{
-opacity:0;
-transform:scale(3);
-}
+margin-top:50px;
 
 }
 
@@ -251,12 +192,6 @@ opacity:.6;
 
 <body>
 
-<div id="loader">NX Spider Loading...</div>
-
-<audio autoplay loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mpeg">
-</audio>
-
 <div class="hero">
 
 <img src="nxlogo.jpg" class="logo">
@@ -268,15 +203,13 @@ opacity:.6;
 <div class="buttons">
 
 <a href="https://youtube.com/@nxspiderr?si=VO2Cd60GE6gAJB1P">YouTube</a>
+
 <a href="https://www.instagram.com/_nxspider?igsh=MTY0aGxtOTFpZmc2aQ==">Instagram</a>
+
 <a href="https://discord.gg/e4GaZKFdMa">Discord</a>
 
 </div>
 
-</div>
-
-<div class="parallax">
-Welcome to NX Spider
 </div>
 
 <section>
@@ -285,10 +218,8 @@ Welcome to NX Spider
 
 <p class="about">
 
-NX Spider is a Minecraft content creator who creates entertaining
-gameplay videos, PvP battles and community events. The goal is to
-build a strong gaming community where players can chill and enjoy
-Minecraft together.
+NX Spider is a Minecraft content creator who builds a gaming community
+through fun gameplay, PvP battles and creative Minecraft content.
 
 </p>
 
@@ -314,10 +245,22 @@ Minecraft together.
 
 </section>
 
-<div class="block"></div>
+<section class="discord">
+
+<h2>Join My Discord</h2>
+
+<iframe src="https://discord.com/widget?id=1478314337365004399&theme=dark"
+width="350"
+height="500"
+allowtransparency="true"
+frameborder="0"></iframe>
+
+</section>
 
 <footer>
+
 Made with ❤️ by NX Spider
+
 </footer>
 
 <script>
@@ -325,43 +268,27 @@ Made with ❤️ by NX Spider
 /* TYPING */
 
 const text="Minecraft Content Creator • Gamer • Community Builder";
+
 let i=0;
 
-function type(){
+function typing(){
 
 if(i<text.length){
 
 document.getElementById("typing").innerHTML+=text.charAt(i);
+
 i++;
-setTimeout(type,50);
+
+setTimeout(typing,50);
 
 }
 
 }
 
-type();
-
-/* CURSOR TRAIL */
-
-document.addEventListener("mousemove",function(e){
-
-let trail=document.createElement("div");
-
-trail.className="trail";
-trail.style.left=e.pageX+"px";
-trail.style.top=e.pageY+"px";
-
-document.body.appendChild(trail);
-
-setTimeout(()=>{
-
-trail.remove()
-
-},1000)
-
-})
+typing();
 
 </script>
 
 </body>
+
 </html>
